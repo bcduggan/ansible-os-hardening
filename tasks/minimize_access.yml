@@ -9,8 +9,7 @@
     - '/usr/local/bin'
     - '/usr/sbin'
     - '/usr/bin'
-    - '/sbin'
-    - '/bin'
+    - '{{ (ansible_distribution != "CentOS") | ternary(["/sbin","/bin"],[]) }}'
     - '{{os_env_extra_user_paths}}'
 
 - name: minimize access
